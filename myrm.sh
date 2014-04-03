@@ -9,8 +9,13 @@ then
     read -p "确定（y/n）：" answer
     if [ "$answer" == "y" ]
     then
-        rm -fv *
-        rm -fv .*
+        for file in $(ls -A)
+        do
+            if [ -f $file ]
+            then
+                rm -fv $file
+            fi
+        done
         lsfile=$(ls -A)
         if [ "$lsfile" == "" ]
         then
